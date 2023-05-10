@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ajay2-deploy
+  name: ajay-deploy
   labels:
-    app: ajay2-mvn-app
+    app: ajay-mvn-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ajay2-mvn-app
+      app: ajay-mvn-app
   template:
     metadata:
       labels:
-        app: ajay2-mvn-app
+        app: ajay-mvn-app
     spec:
       containers:
-      - name: ajay2-mvn-container
+      - name: ajay-mvn-container
         image: ajay206/mvn_apps:latest
         ports:
         - containerPort: 8080
@@ -23,15 +23,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ajay2-np-service
+  name: ajay-np-service
   labels:
-    app: ajay2-mvn-app
+    app: ajay-mvn-app
 spec:
   selector:
-    app: ajay2-mvn-app
+    app: ajay-mvn-app
 
   type: NodePort
   ports:
-  - nodePort: 31000
+  - nodePort: 31100
     port: 8080
     targetPort: 8080
